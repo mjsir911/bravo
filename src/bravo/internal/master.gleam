@@ -51,6 +51,12 @@ pub fn from_spec(
   Ok(InnerTable(tid, atom))
 }
 
+
+pub fn get(name: String) -> Result(InnerTable, Nil) {
+  let atom = atom.create(name)
+  bindings.try_whereis(atom) |> result.map(fn(tid) { InnerTable(tid, atom) })
+}
+
 pub fn insert(table: InnerTable, key: k, value: v) -> Result(Nil, BravoError) {
   bindings.try_insert(table.tid, table.atom, key, value)
 }

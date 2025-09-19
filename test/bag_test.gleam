@@ -436,3 +436,24 @@ pub fn bag_spec_test() {
   bag.lookup(table3, "Hello")
   |> should.equal(Ok(["World"]))
 }
+
+pub fn bag_get_test() {
+  let assert Ok(table) = bag.new("bag18", bravo.Public)
+  let assert Ok(table2) = bag.get("bag18")
+
+  bag.insert(table, "a", 1)
+  |> should.be_ok
+  bag.lookup(table, "a")
+  |> should.equal(Ok([1]))
+
+  bag.delete(table) |> should.be_ok
+  bag.lookup(table, "a")
+  |> should.be_error
+
+  bag.insert(table2, "a", 1)
+  |> should.be_error
+  bag.lookup(table2, "a")
+  |> should.be_error
+
+  let assert Error(Nil) = bag.get("bag18")
+}

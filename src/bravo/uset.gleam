@@ -45,6 +45,13 @@ pub fn new(
   Ok(USet(res))
 }
 
+pub fn get(
+  name name: String,
+) -> Result(USet(k, v), Nil) {
+  use res <- result.try(master.get(name))
+  Ok(USet(res))
+}
+
 /// Creates a new table using a `bravo.Spec`.
 ///
 /// # Parameters

@@ -46,6 +46,13 @@ pub fn new(
   Ok(Bag(res))
 }
 
+pub fn get(
+  name name: String,
+) -> Result(Bag(k, v), Nil) {
+  use res <- result.try(master.get(name))
+  Ok(Bag(res))
+}
+
 /// Creates a new table using a `bravo.Spec`.
 ///
 /// # Parameters
